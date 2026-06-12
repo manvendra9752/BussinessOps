@@ -252,7 +252,9 @@ export default function FollowupTable({ followups, onStatusChange }: Props) {
                   )}
 
                   {item.status !== "PENDING" && (
-                    <span className="text-gray-400 text-sm">No Actions</span>
+                    <span className="text-gray-400 text-sm flex justify-center items-center">
+                      No Actions
+                    </span>
                   )}
                 </td>
               </tr>
