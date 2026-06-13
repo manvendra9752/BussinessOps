@@ -22,7 +22,7 @@ app.use(helmet());
 app.set("trust proxy", 1);
 
 const allowedOrigins = [
-  "https://bussiness-ops.vercel.app",
+  "https://bussiness-ops-lqd5.vercel.app",
   "http://localhost:3000",
 ];
 
