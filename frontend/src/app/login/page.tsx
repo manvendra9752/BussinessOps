@@ -20,7 +20,8 @@ export default function LoginPage() {
     try {
       setLoading(true);
       setError("");
-      await loginUser({ email, password });
+      const res = await loginUser({ email, password });
+      document.cookie = `token=${res.data.token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=lax`;
       toast.success("Welcome back!");
       router.push("/dashboard");
     } catch (err: any) {

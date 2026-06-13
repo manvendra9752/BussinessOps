@@ -80,7 +80,4 @@ const invoiceSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
-invoiceSchema.index({
-  invoiceNumber: 1,
-});
 module.exports = mongoose.model("Invoice", invoiceSchema);

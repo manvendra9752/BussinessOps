@@ -17,6 +17,7 @@ export default function Header({ onMenuClick }: Props) {
   const handleLogout = async () => {
     try {
       await logout();
+      document.cookie = "token=; path=/; max-age=0; secure; samesite=lax";
       toast.success("Logged out successfully");
       router.replace("/login");
     } catch {
