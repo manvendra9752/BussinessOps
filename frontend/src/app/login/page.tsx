@@ -21,9 +21,10 @@ export default function LoginPage() {
       setLoading(true);
       setError("");
       const res = await loginUser({ email, password });
-      document.cookie = `token=${res.data.token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=lax`;
+      document.cookie = `token=${res.data.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
       toast.success("Welcome back!");
-      router.push("/dashboard");
+      // router.push("/dashboard");
+      window.location.href = "/dashboard";
     } catch (err: any) {
       const msg = err?.response?.data?.message || "Invalid credentials";
       setError(msg);
