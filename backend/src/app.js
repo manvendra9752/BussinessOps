@@ -20,12 +20,30 @@ const app = express();
 app.use(helmet());
 
 app.set("trust proxy", 1);
+
+const allowedOrigins = [
+  "https://bussiness-ops.vercel.app",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT_URL || "https://bussiness-ops.vercel.app",
+//     credentials: true,
+//   }),
+// );
 
 app.use(express.json());
 
